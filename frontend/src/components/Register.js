@@ -61,8 +61,8 @@ const Register = () => {
     }
 
     return (
-        <div className="container mx-auto mt-10">
-            <h2 className="text-2xl font-bold mb-4">Register</h2>
+        <div className="container mx-auto mt-10 max-w-md p-4 bg-white shadow-md rounded-md">
+            <h2 className="text-2xl font-bold mb-4 text-center">Register</h2>
             <div className="mb-4">
                 <label htmlFor="name" className="block text-gray-700 text-sm font-bold mb-2">
                     Name:
@@ -70,7 +70,7 @@ const Register = () => {
                 <input
                     type="text"
                     id="name"
-                    className="border-2 border-gray-500 p-2 w-full"
+                    className="border-2 border-gray-500 p-2 w-full focus:outline-none focus:border-green-500 rounded-md"
                     onChange={(e) => setName(e.target.value)}
                 />
             </div>
@@ -81,7 +81,7 @@ const Register = () => {
                 <input
                     type="email"
                     id="email"
-                    className="border-2 border-gray-500 p-2 w-full"
+                    className="border-2 border-gray-500 p-2 w-full focus:outline-none focus:border-green-500 rounded-md"
                     onChange={(e) => setEmail(e.target.value)}
                 />
             </div>
@@ -92,17 +92,18 @@ const Register = () => {
                 <input
                     type="password"
                     id="password"
-                    className="border-2 border-gray-500 p-2 w-full"
+                    className="border-2 border-gray-500 p-2 w-full focus:outline-none focus:border-green-500 rounded-md"
                     onChange={(e) => setPassword(e.target.value)}
                 />
             </div>
             <button
-                className="bg-green-500 text-white p-2 rounded"
+                className="bg-green-500 text-white p-2 w-full rounded-md hover:bg-green-600 focus:outline-none focus:shadow-outline-green"
                 onClick={handleRegister}
             >
                 Register
             </button>
         </div>
+
     );
 };
 

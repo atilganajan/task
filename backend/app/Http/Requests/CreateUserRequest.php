@@ -19,8 +19,7 @@ class CreateUserRequest extends FormRequest
                 'max:50',
                 'regex:/[a-z]/',
                 'regex:/[A-Z]/',
-                'regex:/[0-9]/',
-                'regex:/[@$!%*#?&]/'
+                'regex:/[0-9]/'
             ],
         ];
     }

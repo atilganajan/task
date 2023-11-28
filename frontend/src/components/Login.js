@@ -60,7 +60,7 @@ const Login = () => {
     }
 
     return (
-        <div className="container mx-auto mt-10">
+        <div className="container mx-auto mt-10 max-w-md p-6 bg-white rounded-md shadow-md">
             <h2 className="text-2xl font-bold mb-4">Login</h2>
             <div className="mb-4">
                 <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">
@@ -69,7 +69,7 @@ const Login = () => {
                 <input
                     type="email"
                     id="email"
-                    className="border-2 border-gray-500 p-2 w-full"
+                    className="border-2 border-gray-500 p-2 w-full rounded-md focus:outline-none focus:border-blue-500"
                     onChange={(e) => setEmail(e.target.value)}
                 />
             </div>
@@ -80,17 +80,18 @@ const Login = () => {
                 <input
                     type="password"
                     id="password"
-                    className="border-2 border-gray-500 p-2 w-full"
+                    className="border-2 border-gray-500 p-2 w-full rounded-md focus:outline-none focus:border-blue-500"
                     onChange={(e) => setPassword(e.target.value)}
                 />
             </div>
             <button
-                className="bg-blue-500 text-white p-2 rounded"
+                className="bg-green-500 text-white p-2 w-full rounded-md hover:bg-green-600 focus:outline-none focus:shadow-outline-green"
                 onClick={handleLogin}
             >
                 Login
             </button>
         </div>
+
     );
 };
 
