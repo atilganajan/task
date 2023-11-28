@@ -1,0 +1,30 @@
+.custom-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color:white;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 700px;
+    width: 90%;
+}
+
+.custom-overlay {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.custom-modal input{
+    font-size: 16px;
+    padding: 10px;
+}
+.custom-modal textarea {
+    font-size: 16px;
+    padding: 10px;
+    height: 150px;
+}
+
+.custom-modal button {
+    font-size: 18px;
+    padding: 12px 24px;
+}
