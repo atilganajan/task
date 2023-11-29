@@ -6,6 +6,7 @@ use App\Jobs\FetchArticleJob;
 use Illuminate\Console\Command;
 use GuzzleHttp\Client;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Log;
 
 // Import ShouldQueue
 use App\Models\Article;
@@ -32,14 +33,14 @@ class FetchArticles extends Command implements ShouldQueue
     public function handle()
     {
         try {
-            $this->info('Fetching articles from News API...');
+            Log::info('Fetching articles from News API...');
 
             $client = new Client();
             $response = $client->get("https://newsapi.org/v2/everything?q=history&apiKey=" . env('NEWS_API'));
             $data = json_decode($response->getBody(), true);
 
             if ($data['status'] === 'ok') {
-                $this->info('Articles fetched successfully.');
+                Log::info('Articles fetched successfully.');
 
                 $articles = $data['articles'];
 
@@ -48,12 +49,12 @@ class FetchArticles extends Command implements ShouldQueue
                     FetchArticleJob::dispatch($articleData);
                 }
 
-                $this->info('Articles added to the queue for processing.');
+                Log::info('Articles added to the queue for processing.');
             } else {
-                $this->error('Error fetching articles: ' . $data['message']);
+                Log::error('Error fetching articles. API response: ' . json_encode($data));
             }
         } catch (\Exception $e) {
-            $this->error('Error: ' . $e->getMessage());
+            Log::error('Error: ' . $e->getMessage());
         }
     }
 }

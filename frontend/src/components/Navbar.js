@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { Link } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {Link} from 'react-router-dom';
 import AuthCheck from '../utils/AuthCheck';
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -10,10 +10,9 @@ const Navbar = () => {
 
     const handleLogout = async () => {
         try {
-          const response =  await axios.get(`http://localhost:8000/api/auth/logout?token=${localStorage.getItem('jwtToken')}`);
+            const response = await axios.get(`http://localhost:8000/api/auth/logout?token=${localStorage.getItem('jwtToken')}`);
             setLogoutClicked(true);
-            console.log(response.data);
-            if(response.data.status === true){
+            if (response.data.status === true) {
                 localStorage.removeItem('jwtToken');
                 Swal.fire({
                     position: "center",
@@ -24,11 +23,11 @@ const Navbar = () => {
                     timer: 2000
                 });
 
-                setTimeout(function (){
+                setTimeout(function () {
                     window.location.reload()
-                },2000)
+                }, 2000)
 
-            }else{
+            } else {
                 Swal.fire({
                     position: "center",
                     icon: 'error',
@@ -53,7 +52,10 @@ const Navbar = () => {
     return (
         <nav className="bg-gray-800 p-4 ">
             <div className="container mx-auto flex justify-between items-center">
+
                 <Link to="/" className="text-white text-lg font-bold">Home</Link>
+                <Link to="/category" className="text-white text-lg font-bold">Categories</Link>
+
                 <div className="space-x-4">
                     {isAuthenticated ? (
                         <button onClick={handleLogout} className="text-white cursor-pointer">
@@ -68,6 +70,7 @@ const Navbar = () => {
                 </div>
             </div>
         </nav>
+
     );
 };
 

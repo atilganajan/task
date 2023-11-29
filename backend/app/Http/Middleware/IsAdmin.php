@@ -18,10 +18,11 @@ class IsAdmin
     {
 
         if (Auth::user() && Auth::user()->role === "admin") {
+
             return $next($request);
         }
 
-        return response()->json(["status" => false, "message" => "Unauthorized"]);
+        return response()->json(["status" => false, "message" => "Unauthorized"],401);
 
     }
 }
